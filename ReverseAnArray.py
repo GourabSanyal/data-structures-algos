@@ -6,9 +6,9 @@
 
 # Approach 2: Python slicing method
 
-# list = [21, 32, 65, 87, 55]
-# list1 = list[::-1]
-# print("Approach 2:", list1)
+list = [21, 32, 65, 87, 55]
+list1 = list[::-1]
+print("Approach 2:", list1)
 
 # Approach 3: Iterative way
 
