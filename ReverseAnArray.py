@@ -1,8 +1,8 @@
 # Approach 1: use "reverse()"
 
-# list = [21, 32, 65, 87, 55]
-# list.reverse()
-# print("Approach 1:", list)
+list = [21, 32, 65, 87, 55]
+list.reverse()
+print("Approach 1:", list)
 
 # Approach 2: Python slicing method
 
