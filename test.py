@@ -1,36 +1,56 @@
-def getMinMax(low, high, arr):
-    arr_max = arr[low]
-    arr_min = arr[low]
+# Python3 program of the
+# above approach
 
-    # If there is only one element
-    if low == high:
-        arr_max = arr[low]
-        arr_min = arr[low]
-        return (arr_max, arr_min)
+# Function to shift all the
+# the negative elements to
+# the left of the array
 
-    # If there is only two element
-    elif high == low + 1:
-        if arr[low] > arr[high]:
-            arr_max = arr[low]
-            arr_min = arr[high]
+
+def shiftall(arr, left, right):
+
+    # Loop to iterate while the
+    # left pointer is less than
+    # the right pointer
+    while left <= right:
+
+        # Condition to check if the left
+        # and right pointer negative
+        if arr[left] < 0 and arr[right] < 0:
+            left += 1
+
+        # Condition to check if the left
+        # pointer element is positive and
+        # the right pointer element is
+        # negative
+        elif arr[left] > 0 and arr[right] < 0:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+
+        # Condition to check if the left
+        # pointer is positive and right
+        # pointer as well
+        elif arr[left] > 0 and arr[right] > 0:
+            right -= 1
         else:
-            arr_max = arr[high]
-            arr_min = arr[low]
-        return (arr_max, arr_min)
-    else:
+            left += 1
+            right -= 1
 
-        # If there are more than 2 elements
-        mid = int((low + high) / 2)
-        arr_max1, arr_min1 = getMinMax(low, mid, arr)
-        arr_max2, arr_min2 = getMinMax(mid + 1, high, arr)
-
-    return (max(arr_max1, arr_max2), min(arr_min1, arr_min2))
+# Function to print the array
 
 
-# Driver code
-arr = [1000, 11, 445, 1, 330, 3000]
-high = len(arr) - 1
-low = 0
-arr_max, arr_min = getMinMax(low, high, arr)
-print('Minimum element is ', arr_min)
-print('nMaximum element is ', arr_max)
+def display(arr):
+    for i in range(len(arr)):
+        print(arr[i], end=" ")
+    print()
+
+
+# Driver Code
+if __name__ == "__main__":
+    arr = [-12, 11, -13, -5,
+           6, -7, 5, -3, 11]
+    n = len(arr)
+    shiftall(arr, 0, n-1)
+    display(arr)
+
+# Sumit Singh
