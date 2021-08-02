@@ -1,43 +1,28 @@
-# Python 3 code to find intersection
-# when elements may not be distinct
+# Python3 code for program to
+# cyclically rotate an array by one
 
-# Function to find intersection
-
-
-def intersection(a, b, n, m):
-    i = 0
-    j = 0
-
-    while (i < n and j < m):
-
-        if (a[i] > b[j]):
-            j += 1
-
-        else:
-            if (b[j] > a[i]):
-                i += 1
-
-            else:
-                # when both are equal
-                print(a[i], end=" ")
-                i += 1
-                j += 1
+# Method for rotation
 
 
-# Driver Code
-if __name__ == "__main__":
+def rotate(arr, n):
+    x = arr[n - 1]
 
-    a = [1, 3, 2, 3, 4, 5, 5, 6]
-    b = [3, 3, 5]
+    for i in range(n - 1, 0, -1):
+        arr[i] = arr[i - 1]
 
-    n = len(a)
-    m = len(b)
+    arr[0] = x
 
-    # sort
-    a.sort()
-    b.sort()
 
-    # function call
-    intersection(a, b, n, m)
+# Driver function
+arr = [1, 2, 3, 4, 5]
+n = len(arr)
 
-# This code is contributed by Ita_c
+
+rotate(arr, n)
+
+print("\nRotated array is")
+for i in range(0, n):
+    print(arr[i], end=' ')
+
+# This article is contributed
+# by saloni1297
