@@ -1,56 +1,43 @@
-# Python3 program of the
-# above approach
+# Python 3 code to find intersection
+# when elements may not be distinct
 
-# Function to shift all the
-# the negative elements to
-# the left of the array
+# Function to find intersection
 
 
-def shiftall(arr, left, right):
+def intersection(a, b, n, m):
+    i = 0
+    j = 0
 
-    # Loop to iterate while the
-    # left pointer is less than
-    # the right pointer
-    while left <= right:
+    while (i < n and j < m):
 
-        # Condition to check if the left
-        # and right pointer negative
-        if arr[left] < 0 and arr[right] < 0:
-            left += 1
+        if (a[i] > b[j]):
+            j += 1
 
-        # Condition to check if the left
-        # pointer element is positive and
-        # the right pointer element is
-        # negative
-        elif arr[left] > 0 and arr[right] < 0:
-            arr[left], arr[right] = arr[right], arr[left]
-            left += 1
-            right -= 1
-
-        # Condition to check if the left
-        # pointer is positive and right
-        # pointer as well
-        elif arr[left] > 0 and arr[right] > 0:
-            right -= 1
         else:
-            left += 1
-            right -= 1
+            if (b[j] > a[i]):
+                i += 1
 
-# Function to print the array
-
-
-def display(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
-    print()
+            else:
+                # when both are equal
+                print(a[i], end=" ")
+                i += 1
+                j += 1
 
 
 # Driver Code
 if __name__ == "__main__":
-    arr = [-12, 11, -13, -5,
-           6, -7, 5, -3, 11]
-    n = len(arr)
-    shiftall(arr, 0, n-1)
-    display(arr)
 
-# Sumit Singh
+    a = [1, 3, 2, 3, 4, 5, 5, 6]
+    b = [3, 3, 5]
+
+    n = len(a)
+    m = len(b)
+
+    # sort
+    a.sort()
+    b.sort()
+
+    # function call
+    intersection(a, b, n, m)
+
+# This code is contributed by Ita_c
