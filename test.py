@@ -1,21 +1,22 @@
-def max_sum_subarray(arr):
-    size = len(arr)
-    curr_sum = 0
-    max_so_far = arr[0]
-    st = 0
-    end = 0
-    poi = 0
-    for i in range(0, size):
-        curr_sum = curr_sum+arr[i]
+# Python3 code to Find the repeating
+# and the missing elements
 
-        if(max_so_far < curr_sum):
-            max_so_far = curr_sum
-            st = poi
-            en = i
-        if(curr_sum < 0):
-            curr_sum = 0
-            poi = i+1
 
-    print("Maximum sum Subarray is", max_so_far)
-    print("Start Index of window is", st)
-    print("End Index of window is", en)
+def printTwoElements(arr, size):
+    for i in range(size):
+        if arr[abs(arr[i])-1] > 0:
+            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1]
+        else:
+            print("The repeating element is", abs(arr[i]))
+
+    for i in range(size):
+        if arr[i] > 0:
+            print("and the missing element is", i + 1)
+
+
+# Driver program to test above function */
+arr = [7, 3, 4, 5, 5, 6, 2]
+n = len(arr)
+printTwoElements(arr, n)
+
+# This code is contributed by "Abhishek Sharma 44"
