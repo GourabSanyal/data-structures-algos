@@ -1,22 +1,43 @@
-# Python3 code to Find the repeating
-# and the missing elements
+# Python3 program to merge overlapping Intervals
+# in O(n Log n) time and O(1) extra space
 
 
-def printTwoElements(arr, size):
-    for i in range(size):
-        if arr[abs(arr[i])-1] > 0:
-            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1]
+def mergeIntervals(arr):
+
+    # Sorting based on the increasing order
+    # of the start intervals
+    arr.sort(key=lambda x: x[0])
+
+    # array to hold the merged intervals
+    m = []
+    s = -10000
+    max = -100000
+    for i in range(len(arr)):
+        a = arr[i]
+        if a[0] > max:
+            if i != 0:
+                m.append([s, max])
+            max = a[1]
+            s = a[0]
         else:
-            print("The repeating element is", abs(arr[i]))
+            if a[1] >= max:
+                max = a[1]
 
-    for i in range(size):
-        if arr[i] > 0:
-            print("and the missing element is", i + 1)
+    # 'max' value gives the last point of
+    # that particular interval
+    # 's' gives the starting point of that interval
+    # 'm' array contains the list of all merged intervals
+
+    if max != -100000 and [s, max] not in m:
+        m.append([s, max])
+    print("The Merged Intervals are :", end=" ")
+    for i in range(len(m)):
+        print(m[i], end=" ")
 
 
-# Driver program to test above function */
-arr = [7, 3, 4, 5, 5, 6, 2]
-n = len(arr)
-printTwoElements(arr, n)
+# Driver code
+arr = [[6, 8], [1, 9], [2, 4], [4, 7]]
+mergeIntervals(arr)
 
-# This code is contributed by "Abhishek Sharma 44"
+# This code is contributed
+# by thirumalai srinivasan
