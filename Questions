@@ -1,0 +1,9 @@
+# remove an item from the stack
+
+def pop(stack):
+    if (emptyStack(stack)):
+        return str(-maxsize - 1)  # return minus infinite
+
+    return stack.pop()
+
+-maxsize -1 ta hoche keno?
