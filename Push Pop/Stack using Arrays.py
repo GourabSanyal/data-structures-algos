@@ -1,6 +1,6 @@
 from sys import maxsize
 
-# create the srtack
+# create the stack
 
 
 def createStack():
