@@ -1,6 +1,3 @@
-# Define 2 stacks
-
-
 class QueStacks(object):
     def __init__(self):
         self.stack1 = []
