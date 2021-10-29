@@ -1,34 +1,21 @@
-# Python program to reverse a linked list
-# Time Complexity : O(n)
-# Space Complexity : O(1)
-
+# Python3 program to find middle of linked list
 # Node class
 
 
 class Node:
 
-    # Constructor to initialize the node object
+    # Function to initialise the node object
     def __init__(self, data):
-        self.data = data
-        self.next = None
+        self.data = data  # Assign data
+        self.next = None  # Initialize next as null
 
 
+# Linked List class contains a Node object
 class LinkedList:
 
     # Function to initialize head
     def __init__(self):
         self.head = None
-
-    # Function to reverse the linked list
-    def reverse(self):
-        prev = None
-        current = self.head
-        while(current is not None):
-            next = current.next
-            current.next = prev
-            prev = current
-            current = next
-        self.head = prev
 
     # Function to insert a new node at the beginning
     def push(self, new_data):
@@ -36,25 +23,38 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
 
-    # Utility function to print the linked LinkedList
+    # Print the linked list
     def printList(self):
-        temp = self.head
-        while(temp):
-            print(temp.data,)
-            temp = temp.next
+        node = self.head
+        while node:
+            print(str(node.data) + "->", end="")
+            node = node.next
+        print("NULL")
+
+    # Function that returns middle.
+    def printMiddle(self):
+        # Initialize two pointers, one will go one step a time (slow), another two at a time (fast)
+        slow = self.head
+        fast = self.head
+
+        # Iterate till fast's next is null (fast reaches end)
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # return the slow's data, which would be the middle element.
+        print("The middle element is ", slow.data)
 
 
-# Driver code
-llist = LinkedList()
-llist.push(20)
-llist.push(4)
-llist.push(15)
-llist.push(85)
+# Code execution starts here
+if __name__ == '__main__':
 
-print("Given Linked List")
-llist.printList()
-llist.reverse()
-print("\nReversed Linked List")
-llist.printList()
+    # Start with the empty list
+    llist = LinkedList()
 
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
+    for i in range(5, 0, -1):
+        llist.push(i)
+        llist.printList()
+        llist.printMiddle()
+
+# Code is contributed by Kumar Shivam (kshivi99)
