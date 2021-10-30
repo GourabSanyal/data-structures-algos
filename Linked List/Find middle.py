@@ -15,8 +15,11 @@ class LinkedList:
 
 # push algo
     def push(self, newData):
+        # allocate node and put the data
         newNode = Node(newData)
+        # link the old list off the new node
         newNode.next = self.head
+        # move the head to point to the new node
         self.head = newNode
 
 # Print the list
