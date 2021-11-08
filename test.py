@@ -1,66 +1,57 @@
-# Python3 program to merge two
-# sorted linked lists in-place.
-import math
+# Python program to detect loop in the linked list
+
+# Node class
 
 
 class Node:
+
+    # Constructor to initialize the node object
     def __init__(self, data):
         self.data = data
         self.next = None
 
-# Function to create newNode in a linkedlist
+
+class LinkedList:
+
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+
+    # Function to insert a new node at the beginning
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Utility function to print it the linked LinkedList
+    def printList(self):
+        temp = self.head
+        while(temp):
+            print(temp.data, end=" ")
+            temp = temp.next
+
+    def detectLoop(self):
+        slow_p = self.head
+        fast_p = self.head
+        while(slow_p and fast_p and fast_p.next):
+            slow_p = slow_p.next
+            fast_p = fast_p.next.next
+            if slow_p == fast_p:
+                return
 
 
-def newNode(key):
-    temp = Node(key)
-    temp.data = key
-    temp.next = None
-    return temp
+# Driver program for testing
+llist = LinkedList()
+llist.push(20)
+llist.push(4)
+llist.push(15)
+llist.push(10)
 
-# A utility function to print linked list
+# Create a loop for testing
+llist.head.next.next = llist.head
+if(llist.detectLoop()):
+    print("Found Loop")
+else:
+    print("No Loop")
 
-
-def printList(node):
-    while (node != None):
-        print(node.data, end=" ")
-        node = node.next
-
-# Merges two given lists in-place.
-# This function mainly compares
-# head nodes and calls mergeUtil()
-
-
-def merge(h1, h2):
-    if (h1 == None):
-        return h2
-    if (h2 == None):
-        return h1
-
-    # start with the linked list
-    # whose head data is the least
-    if (h1.data < h2.data):
-        h1.next = merge(h1.next, h2)
-        return h1
-
-    else:
-        h2.next = merge(h1, h2.next)
-        return h2
-
-
-# Driver Code
-if __name__ == '__main__':
-    head1 = newNode(1)
-    head1.next = newNode(3)
-    head1.next.next = newNode(5)
-
-    # 1.3.5 LinkedList created
-    head2 = newNode(0)
-    head2.next = newNode(2)
-    head2.next.next = newNode(4)
-
-    # 0.2.4 LinkedList created
-    mergedhead = merge(head1, head2)
-
-    printList(mergedhead)
-
-# This code is contributed by Srathore
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
