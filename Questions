@@ -1,9 +1,13 @@
 # remove an item from the stack
 
-def pop(stack):
-    if (emptyStack(stack)):
-        return str(-maxsize - 1)  # return minus infinite
+# def pop(stack):
+#     if (emptyStack(stack)):
+#         return str(-maxsize - 1)  # return minus infinite
 
-    return stack.pop()
+#     return stack.pop()
 
--maxsize -1 ta hoche keno?
+# -maxsize -1 ta hoche keno?
+
+# String: Roma to integer
+
+#  for i in range(n-1, -1, -1): ei duto -1 hoche keno?
