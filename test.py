@@ -1,35 +1,18 @@
-def romanToInt(rom):
-    value = {
-        'M': 1000,
-        'D': 500,
-        'C': 100,
-        'L': 50,
-        'X': 10,
-        'V': 5,
-        'I': 1
-    }
-
-    # Initialize previous character and answer
-    p = 0
-    ans = 0
-
-    # Traverse through all characters
-    n = len(rom)
-    for i in range(n-1):
-
-        # If greater than or equal to previous,
-        # add to answer
-        if value[rom[i]] >= p:
-            ans += value[rom[i]]
-
-        # If smaller than previous
-        else:
-            ans -= value[rom[i]]
-
-        # Update previous
-        p = value[rom[i]]
-
-    print(ans)
+# Function for nth Fibonacci number
 
 
-romanToInt('MCMIV')
+def Fibonacci(n):
+    if n == 0:
+        return 0
+    # Second Fibonacci number is 1
+    elif n == 1:
+        return 1
+    else:
+        return Fibonacci(n-1)+Fibonacci(n-2)
+
+# Driver Program
+
+
+print(Fibonacci(9))
+
+# This code is contributed by Saket Modi

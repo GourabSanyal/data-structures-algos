@@ -8,22 +8,15 @@ def intToRom(num):
               "L", "XL", "X", "IX", "V", "IV", "I"]
     value = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
 
-    roman = 0
+    roman = ''
     i = 0
-    while num > 0:
-        # division - set it to div
-        div = num // value[i]
-        # moduler - set it to num
-        num = num % value[i]
-
-        while div:
-            # add the div to the roman
-            roman = roman + symbol[i]
-            # decrease the div by 1
-            div = div - 1
-        # increase the index by 1
+    if num != 0:
+        if value[i] <= num:
+            roman += symbol[i]
+            num = num - value[i]
+    else:
         i = i + 1
-        return num
+    return num
 
 
 num = 12
