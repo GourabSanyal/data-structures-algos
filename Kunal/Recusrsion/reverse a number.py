@@ -1,9 +1,15 @@
-def reverse(n):
-    rev = 0
-    while (n >= 0):
-        a = n % 10
-        rev = (rev * 10) + a
-        n = n/10
 
 
-print(reverse(reverse))
+def revr(n):
+    sum = 0
+    if n == 0:
+        return
+    else:
+        rem = (n % 10)
+        sum = (sum * 10) + rem
+        n = n//10
+        return revr(n)
+
+
+n = 1234
+print(revr(n))
