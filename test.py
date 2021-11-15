@@ -1,18 +1,13 @@
-# Function for nth Fibonacci number
+# Python program to reverse a number
 
+n = 4562
+rev = 0
 
-def Fibonacci(n):
-    if n == 0:
-        return 0
-    # Second Fibonacci number is 1
-    elif n == 1:
-        return 1
-    else:
-        return Fibonacci(n-1)+Fibonacci(n-2)
+while(n > 0):
+    a = n % 10
+    rev = rev * 10 + a
+    n = n // 10
 
-# Driver Program
+print(rev)
 
-
-print(Fibonacci(9))
-
-# This code is contributed by Saket Modi
+# This code is contributed by Shariq Raza
