@@ -7,8 +7,8 @@
 
 
 def pattern1(n):
-    for i in range(0, n):
-        for j in range(0, i+1):
+    for row in range(0, n):
+        for col in range(0, row+1):
             print("* ", end="")
         print(" ")
 

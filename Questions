@@ -11,3 +11,11 @@
 # String: Roma to integer
 
 #  for i in range(n-1, -1, -1): ei duto -1 hoche keno?
+
+# pattern:
+# 1. pattern2 te n-row hoceh keno?
+# 2. recursive triangle 1 - code tar mane ki?
+
+# 2d array: puro jinis ta dry run kore bojha
+
+#
