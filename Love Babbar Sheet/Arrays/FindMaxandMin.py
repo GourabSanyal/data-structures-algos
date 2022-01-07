@@ -47,7 +47,6 @@ def getMinMax(low, high, arr):
         return(arr_max,  arr_min)
     else:
          # If there is more than tewo elements
-
         mid = int((low + high) / 2)
         arr_max1, arr_min1 = getMinMax(low, mid, arr)
         arr_max2, arr_min2 = getMinMax(mid + 1, high, arr)
