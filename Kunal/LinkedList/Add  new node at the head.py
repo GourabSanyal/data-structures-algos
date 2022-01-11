@@ -16,10 +16,11 @@ class LinkedList:
     def printList(self):
         temp = self.head
         while(temp != None):
-            print(temp, end="")
+            print(temp.data, end="")
             temp = temp.next
 
-    def insertNode(self, data, position):
+    def insertNode(self,
+                   data, position):
         newNode = Node(data)
         if self.head == None:
             self.head == Node

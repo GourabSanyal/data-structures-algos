@@ -34,12 +34,12 @@ if __name__ == '__main__':
 
 	# Use push() to construct below list
 	# 1->12->1->4->1
-	head = push(head, 1)
-	head = push(head, 4)
-	head = push(head, 1)
-	head = push(head, 12)
-	head = push(head, 1)
+	head.push(head, 1)
+	head.push(head, 4)
+	head.push(head, 1)
+	head.push(head, 12)
+	head.push(head, 1)
 
 
     print("List before deleting")
-    printList()
+    head.printList()
