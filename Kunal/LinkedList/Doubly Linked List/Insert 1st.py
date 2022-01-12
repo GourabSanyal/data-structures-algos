@@ -31,8 +31,9 @@ class DLL:
     def display(self):
         temp = self.head
         while(temp != None):
-            print(temp.data, end=" ")
+            print(str(temp.data), end=" ")
             temp = temp.next
+            return temp
 
 
 # driver code

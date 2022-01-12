@@ -1,61 +1,98 @@
+# Python3 Program to remove duplicates
+# from a sorted linked list
+# import math
+
+# Link list node
+
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-class InsertEnd:
-    # Represent the head and tail of the singly linked list
-    def __init__(self):
-        self.head = None
-        self.tail = None
+def removeDuplicates(head):
 
-    # addAtEnd() will add a new node to the end of the list
-    def addAtEnd(self, data):
-        # Create a new node
-        newNode = Node(data)
+    # Pointer to store the pointer of a node
+    # to be deleted to_free
 
-        # Checks if the list is empty
-        if(self.head == None):
-            # If list is empty, both head and tail will point to new node
-            self.head = newNode
-            self.tail = newNode
+    # do nothing if the list is empty
+    if (head == None):
+        return
+
+    # Traverse the list till last node
+    if (head.next != None):
+
+        # Compare head node with next node
+        if (head.data == head.next.data):
+
+            # The sequence of steps is important.
+            # to_free pointer stores the next of head
+            # pointer which is to be deleted.
+            to_free = head.next
+            head.next = head.next.next
+
+            # free(to_free)
+            removeDuplicates(head)
+
+        # This is tricky: only advance if no deletion
         else:
-            # newNode will be added after tail such that tail's next will point to newNode
-            self.tail.next = newNode
-            # newNode will become new tail of the list
-            self.tail = newNode
+            removeDuplicates(head.next)
 
-    # display() will display all the nodes present in the list
-    def display(self):
-        # Node current will point to head
-        current = self.head
+    return head
 
-        if(self.head == None):
-            print("List is empty")
-            return
-
-        print("Adding nodes to the end of the list: ")
-        while(current != None):
-            # Prints each node by incrementing pointer
-            print(current.data)
-            current = current.next
+# UTILITY FUNCTIONS
+# Function to insert a node at the
+# beginning of the linked list
 
 
-sList = InsertEnd()
+def push(head_ref, new_data):
 
-# Adding 1 to the list
-sList.addAtEnd(1)
-sList.display()
+    # allocate node
+    new_node = Node(new_data)
 
-# Adding 2 to the list
-sList.addAtEnd(2)
-sList.display()
+    # put in the data
+    new_node.data = new_data
 
-# Adding 3 to the list
-sList.addAtEnd(3)
-sList.display()
+    # link the old list off the new node
+    new_node.next = head_ref
 
-# Adding 4 to the list
-sList.addAtEnd(4)
-sList.display()
+    # move the head to point to the new node
+    head_ref = new_node
+    return head_ref
+
+# Function to print nodes in a given linked list
+
+
+def printList(node):
+    while (node != None):
+        print(node.data, end=" ")
+        node = node.next
+
+
+# Driver code
+if __name__ == '__main__':
+
+    # Start with the empty list
+    head = None
+
+    # Let us create a sorted linked list
+    # to test the functions
+    # Created linked list will be 11.11.11.13.13.20
+    head = push(head, 20)
+    head = push(head, 13)
+    head = push(head, 13)
+    head = push(head, 11)
+    head = push(head, 11)
+    head = push(head, 11)
+
+    print("Linked list before duplicate removal ",
+          end="")
+    printList(head)
+
+    # Remove duplicates from linked list
+    removeDuplicates(head)
+
+    print("\nLinked list after duplicate removal ",
+          end="")
+    printList(head)
