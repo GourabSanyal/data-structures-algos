@@ -1,98 +1,96 @@
-# Python3 Program to remove duplicates
-# from a sorted linked list
-# import math
-
-# Link list node
+""" Python program to merge two
+sorted linked lists """
 
 
+# Linked List Node
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-def removeDuplicates(head):
+# Create & Handle List operations
+class LinkedList:
+    def __init__(self):
+        self.head = None
 
-    # Pointer to store the pointer of a node
-    # to be deleted to_free
+    # Method to display the list
+    def printList(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" ")
+            temp = temp.next
 
-    # do nothing if the list is empty
-    if (head == None):
-        return
+    # Method to add element to list
+    def addToList(self, newData):
+        newNode = Node(newData)
+        if self.head is None:
+            self.head = newNode
+            return
 
-    # Traverse the list till last node
-    if (head.next != None):
+        last = self.head
+        while last.next:
+            last = last.next
 
-        # Compare head node with next node
-        if (head.data == head.next.data):
+        last.next = newNode
 
-            # The sequence of steps is important.
-            # to_free pointer stores the next of head
-            # pointer which is to be deleted.
-            to_free = head.next
-            head.next = head.next.next
 
-            # free(to_free)
-            removeDuplicates(head)
+# Function to merge the lists
+# Takes two lists which are sorted
+# joins them to get a single sorted list
+def mergeLists(headA, headB):
 
-        # This is tricky: only advance if no deletion
+    # A dummy node to store the result
+    dummyNode = Node(0)
+
+    # Tail stores the last node
+    tail = dummyNode
+    while True:
+
+        # If any of the list gets completely empty
+        # directly join all the elements of the other list
+        if headA is None:
+            tail.next = headB
+            break
+        if headB is None:
+            tail.next = headA
+            break
+
+        # Compare the data of the lists and whichever is smaller is
+        # appended to the last of the merged list and the head is changed
+        if headA.data <= headB.data:
+            tail.next = headA
+            headA = headA.next
         else:
-            removeDuplicates(head.next)
+            tail.next = headB
+            headB = headB.next
 
-    return head
+        # Advance the tail
+        tail = tail.next
 
-# UTILITY FUNCTIONS
-# Function to insert a node at the
-# beginning of the linked list
-
-
-def push(head_ref, new_data):
-
-    # allocate node
-    new_node = Node(new_data)
-
-    # put in the data
-    new_node.data = new_data
-
-    # link the old list off the new node
-    new_node.next = head_ref
-
-    # move the head to point to the new node
-    head_ref = new_node
-    return head_ref
-
-# Function to print nodes in a given linked list
+    # Returns the head of the merged list
+    return dummyNode.next
 
 
-def printList(node):
-    while (node != None):
-        print(node.data, end=" ")
-        node = node.next
+# Create 2 lists
+listA = LinkedList()
+listB = LinkedList()
 
+# Add elements to the list in sorted order
+listA.addToList(5)
+listA.addToList(10)
+listA.addToList(15)
 
-# Driver code
-if __name__ == '__main__':
+listB.addToList(2)
+listB.addToList(3)
+listB.addToList(20)
 
-    # Start with the empty list
-    head = None
+# Call the merge function
+listA.head = mergeLists(listA.head, listB.head)
 
-    # Let us create a sorted linked list
-    # to test the functions
-    # Created linked list will be 11.11.11.13.13.20
-    head = push(head, 20)
-    head = push(head, 13)
-    head = push(head, 13)
-    head = push(head, 11)
-    head = push(head, 11)
-    head = push(head, 11)
+# Display merged list
+print("Merged Linked List is:")
+listA.printList()
 
-    print("Linked list before duplicate removal ",
-          end="")
-    printList(head)
-
-    # Remove duplicates from linked list
-    removeDuplicates(head)
-
-    print("\nLinked list after duplicate removal ",
-          end="")
-    printList(head)
+""" This code is contributed
+by Debidutta Rath """
